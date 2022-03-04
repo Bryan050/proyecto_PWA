@@ -1,0 +1,36 @@
+{{> header}}
+
+<body class="bg-gradient-primary" style="background: rgb(249,249,249);">
+    <div class="container shadow-none" style="background: #f9f9f9;">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-12 col-xl-10" style="background: #f9f9f9;">
+                <div class="card shadow-none o-hidden border-0 my-5">
+                    <div class="card-body p-0" style="background: rgb(249,249,249);">
+                        <div class="row d-xl-flex justify-content-xl-center">
+                            <div class="col-lg-6">
+                                <div class="p-5" style="border-radius: 3px;border: 1px solid rgb(209,211,226);background: #ffffff;">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-4">Bienvenido</h4>
+                                    </div>
+                                    <form class="user">
+                                        <div class="mb-3"><input class="form-control form-control-user" type="text" id="txtUsuario" aria-describedby="emailHelp" placeholder="Usuario" name="email" style="border-top-color: rgb(133,;border-right-color: 135,;border-bottom-color: 150);border-left-color: 135,;" required></div>
+                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="txtPassword" placeholder="Contraseña" name="password" required></div>
+                                        <div class="mb-3">
+                                            <div class="custom-control custom-checkbox small"></div>
+                                        </div><button class="btn btn-primary d-block btn-user w-100" id="btnSubmit" type="submit" style="background: rgb(78,218,29);color: rgb(255, 255, 255);border-color: rgb(78,218,29);">Iniciar sesión</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="/assets/js/fetch_script.js"></script>
+    <script type="module" src="/assets/js/login_script.js"></script>
+    <script src="/assets/js/theme.js"></script>
+</body>
+
+</html>

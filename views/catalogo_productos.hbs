@@ -1,0 +1,52 @@
+{{>header_blog}}
+<body>
+    {{> navbar_blog}}
+    <div class="container" style="text-align: center;padding: 46px;"><input type="text" id="txtBusqueda"><button class="btn btn-primary" type="button" style="padding: 0;height: 40px;margin-left: 5px;padding-right: 10px;padding-left: 10px;">Buscar</button></div>
+    <hr style="margin-bottom: 25px;">
+    <article>
+        <div class="container container-fluid" style="padding-right: 0;padding-left: 0;margin-top: 10px;">
+            <div class="row">
+                <div class="col-3">
+                    <h1 style="font-size: 20px;">Categorias</h1>
+                    <hr style="margin: 5px 0px;"><a href="#" style="font-size: 16px;">Categorias</a>
+                </div>
+                <div class="col">
+                    <div class="row" id="contenedorProductos">
+                        {{#each productos}}
+                            <div class="col-4">
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12"><img></div>
+                                            <div class="col-12"><a href="{{this.link}}" style="font-size: 16px;font-weight: bold;">{{this.nombre}}</a>
+                                                <p style="margin: 0;font-size: 16px;">{{this.descripcion}}</p>
+                                                <p style="margin: 0;font-size: 16px;">{{this.precio}}$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}} 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto">
+                    <ul class="list-inline text-center">
+                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></li>
+                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></li>
+                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-github fa-stack-1x fa-inverse"></i></span></li>
+                    </ul>
+                    <p class="text-muted copyright">Copyright&nbsp;©&nbsp;Brand 2022</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

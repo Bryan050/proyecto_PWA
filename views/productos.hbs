@@ -1,0 +1,138 @@
+{{> header}}
+
+<body id="page-top">
+    <div id="wrapper">
+        {{> navbar_vertical}}
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                {{> navbar_horizontal}}
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Productos</h3>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Datos producto</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 51px;">#</th>
+                                            <th style="width: 213px;">Nombre</th>
+                                            <th style="width: 441px;">Descripción</th>
+                                            <th style="width: 88px;">Precio</th>
+                                            <th style="width: 213px;">Categoria</th>
+                                            <th style="width: 211px;">Operaciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each productos}}
+                                        <tr>
+                                            <td style="display: none;">{{this.id}}</td>
+                                            <td>{{incremented @index}}</td>
+                                            <td>{{this.nombre}}</td>
+                                            <td>{{this.descripcion}}</td>
+                                            <td>{{this.precio}}</td>
+                                            <td style="display: none;">{{this.categoriumId}}</td>
+                                            <td>{{this.categorium.nombre}}</td>
+                                            <td>
+                                                <div class="btn-group" role="group"><button class="btn btn-primary btnAniadir btnAction" type="button" data-bs-toggle="modal" data-bs-target="#productoModal" style="font-size: 12px;">Añadir</button><button class="btn btn-secondary btnModificar btnAction" type="button" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#productoModal">Modificar</button><button class="btn btn-danger btnAction" type="button" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar</button></div>
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>#</strong></td>
+                                            <td><strong>Nombre</strong></td>
+                                            <td><strong>Descripción</strong></td>
+                                            <td><strong>Precio</strong></td>
+                                            <td><strong>Categoria</strong></td>
+                                            <td><strong>Operaciones</strong></td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" role="dialog" tabindex="-1" id="productoModal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Título</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <form class="user" id="modalForm" onsubmit="return validateMyForm()">
+                                            <div class="mb-3"><input class="form-control" id="nombre" type="text" style="padding: 10px;font-size: 17px;" placeholder="Nombre" name="nombre" required></div>
+                                            <div class="mb-3"></div><textarea class="form-control" id="descripcion" name="descirpcion" placeholder="Descripción" style="padding: 10px;font-size: 16px;margin-bottom: 16px;resize: none;" required></textarea>
+                                            <div class="mb-3"><input class="form-control" id="precio" type="number" style="padding: 10px;font-size: 16px;" name="precio" placeholder="Precio" min="0" step="0.01" required></div>
+                                            <select class="form-control" id="categoria">
+                                                <option>Categoria</option>
+                                            </select>
+                                            <input type="submit" id="submit" style="display: none;">
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" id="guardar" type="button">Guardar</button></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" role="dialog" tabindex="-1" id="eliminarModal">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body"><i class="fa fa-warning d-md-flex justify-content-md-center" style="font-size: 62px;color: #ffcd00;margin-bottom: 10px;margin-top: 37px;"></i>
+                                    <p class="text-center">¿Desea eliminar el producto?</p>
+                                </div>
+                                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancelar</button><button class="btn btn-primary" id="eliminar" data-bs-dismiss="modal">Aceptar</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="modal fade" role="dialog" tabindex="-1" id="miModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Modal Title</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>The content of your modal.</p>
+                            </div>
+                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="assets/js/fetch_script.js"></script>
+    <script type="module" src="assets/js/producto_script.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

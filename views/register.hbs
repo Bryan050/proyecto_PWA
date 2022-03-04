@@ -1,0 +1,35 @@
+{{> header}}
+<body class="bg-gradient-primary" style="background: rgb(249,249,249);">
+    <div class="container">
+        <div class="card shadow-none o-hidden border-0 my-5" style="opacity: 1;">
+            <div class="card-body bg-white shadow-none visible p-0">
+                <div class="row d-lg-flex justify-content-lg-center" style="background: rgb(249,249,249);">
+                    <div class="col-lg-6">
+                        <div class="bg-white p-5" style="border-radius: 3px;border: 1px solid rgb(209,211,226) ;">
+                            <form class="user" >
+                                <div class="text-center">
+                                    <h4 class="text-dark mb-4">Create cuenta</h4>
+                                </di required>
+                                <div style="margin-bottom: 16px;"><input class="form-control" id="txtNombre" type="text" style="margin-bottom: 0px;padding: 16px;padding-top: 16px;font-size: 12.8px;border-radius: 160px;" placeholder="Nombre" name="nombre" required></div>
+                                <div style="margin-bottom: 16px;"><input class="form-control" id="txtUsuario" type="text" style="margin-bottom: 0px;padding: 16px;padding-top: 16px;font-size: 12.8px;border-radius: 160px;" placeholder="Usuario" name="usuario" required></div>
+                                <div style="margin-bottom: 16px;"><input class="form-control" id="txtDireccion" type="text" style="margin-bottom: 0px;padding: 16px;padding-top: 16px;font-size: 12.8px;border-radius: 160px;" placeholder="Dirección" name="direccion" required></div>
+                                <div style="margin-bottom: 16px;"><input class="form-control" id="txtCedula" type="text" maxlength="10" style="margin-bottom: 0px;padding: 16px;padding-top: 16px;font-size: 12.8px;border-radius: 160px;" placeholder="Cédula" name="cedula" required></div>
+                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" name="email"></div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" id="txtPassword" type="password" id="examplePasswordInput" placeholder="Contraseña" name="password"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" id="txtRepeatPassword" type="password" id="exampleRepeatPasswordInput" placeholder="Repetir Contraseña" name="password_repeat"></div>
+                                </div><input class="btn btn-primary d-block btn-user w-100" id="btnSubmit" type="submit" style="background: rgb(78,218,29);color: rgb(255, 255, 255);border-color: rgb(78,218,29);" value="Registrar cuenta">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="/assets/js/fetch_script.js"></script>
+    <script type="module" src="/assets/js/register_script.js"></script>
+    <script src="/assets/js/theme.js"></script>
+</body>
+
+</html>

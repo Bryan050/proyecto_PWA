@@ -1,0 +1,118 @@
+{{> header}}
+<body id="page-top">
+    <div id="wrapper">
+        {{> navbar_vertical}}
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content" style="padding-right: 0px;color: rgb(93,101,164);">
+                {{> navbar_horizontal}}
+                <div class="container" style="margin-bottom: 16px;">
+                    <form>
+                        <div class="row">
+                            <div class="col-9" style="padding-right: 0px;padding-left: 0px;">
+                                <div class="input-group"><input class="form-control" id="txtTitulo" type="text" style="padding: 7px;border-radius: 0px;border-style: solid;border-top-style: none;border-right-style: none;border-bottom-width: 3px;border-bottom-style: solid;border-left-style: none;background: rgb(248,249,252);" name="titulo" placeholder="Título"></div>
+                            </div>
+                            <div class="col-3"><button class="btn btn-secondary" id="btnPublicar" type="button"><i class="fa fa-send" style="padding-right: 5px;"></i>Publicar</button><button class="btn btn-warning" id="btnGuardar" type="button"><i class="fa fa-pencil" style="padding-right: 5px;"></i>Guardar</button></div>
+                            
+                        </div>
+                    </form>
+                </div>
+                <div class="container-fluid" style="margin-bottom: 16px;padding-bottom: 24px;">
+                    <div class="float-start" style="width: 45px;">
+                        <div class="dropdown" style="width: 40px;"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: rgb(255,255,255);color: rgb(0,0,0);padding: 0px;border-style: none;border-top-style: none;border-right-style: none;border-radius: 0px;"><i class="fa fa-font" style="font-size: 20px;"></i></button>
+                            <div class="dropdown-menu"><button class="btn dropdown-item" value="Arial" data-element="fontName">Arial</button><button class="btn dropdown-item" value="Calibri" data-element="fontName">Calibri</button><button class="btn dropdown-item" value="Courier" data-element="fontName">Courier</button><button class="btn dropdown-item" value="Georgia" data-element="fontName">Georgia</button><button class="btn dropdown-item" value="Times New Roman" data-element="fontName">Times New Roman</button></div>
+                        </div>
+                    </div>
+                    <div class="float-start" style="width: 45px;">
+                        <div class="dropdown" style="width: 40px;"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: rgb(255,255,255);color: rgb(0,0,0);padding: 0px;border-style: none;border-top-style: none;border-right-style: none;border-radius: 0px;padding-top: 0px;"><i class="material-icons" style="font-size: 20px;">format_size</i></button>
+                            <div class="dropdown-menu"><button class="btn dropdown-item" value="1" data-element="fontSize">1</button><button class="btn dropdown-item" value="2" data-element="fontSize">2</button><button class="btn dropdown-item" value="3" data-element="fontSize">3</button><button class="btn dropdown-item" value="4" data-element="fontSize">4</button><button class="btn dropdown-item" value="5" data-element="fontSize">5</button></div>
+                        </div>
+                    </div>
+                    <div class="float-start" style="width: 25px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-element="bold"><i class="fa fa-bold" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>
+                    <div class="float-start" style="width: 25px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-element="italic"><i class="fa fa-italic" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>
+                    <div class="float-start" style="width: 25px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-element="underline"><i class="fa fa-underline" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>
+                    <div class="float-start" style="width: 25px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-element="strikethrough"><i class="fa fa-strikethrough" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>
+                    <div class="float-start" style="width: 30px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-bs-toggle="modal" data-bs-target="#colorModal" data-element="foreColor"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="font-size: 26px;color: rgb(0,0,0);">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.9479 3.20946C12.7721 2.83236 12.391 2.61645 11.9997 2.63269C11.6086 2.61666 11.2278 2.83255 11.0521 3.20948L5.1354 15.8978C4.90199 16.3983 5.11855 16.9933 5.61909 17.2267C6.11963 17.4601 6.71461 17.2436 6.94801 16.743L8.39869 13.632H15.6013L17.052 16.743C17.2854 17.2435 17.8804 17.4601 18.3809 17.2267C18.8814 16.9933 19.098 16.3983 18.8646 15.8978L12.9479 3.20946ZM14.6687 11.632L12 5.909L9.33131 11.632H14.6687Z" fill="currentColor"></path>
+                                <path d="M6 19.3682C5.44772 19.3682 5 19.816 5 20.3682C5 20.9205 5.44772 21.3682 6 21.3682H18C18.5523 21.3682 19 20.9205 19 20.3682C19 19.816 18.5523 19.3682 18 19.3682H6Z" fill="currentColor"></path>
+                            </svg></button></div>
+                    <div class="float-start" style="width: 30px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-bs-toggle="modal" data-bs-target="#colorModal" data-element="hiliteColor"><i class="fas fa-highlighter" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>
+                    <div class="float-start" style="width: 45px;">
+                        <div class="dropdown" style="width: 40px;"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: rgb(255,255,255);color: rgb(0,0,0);padding: 0px;border-style: none;border-top-style: none;border-right-style: none;border-radius: 0px;"><i class="fa fa-align-left" style="font-size: 20px;"></i></button>
+                            <div class="dropdown-menu"><button class="btn dropdown-item" style="font-size: 14px;" data-element="justifyLeft"><i class="fas fa-align-left" style="font-size: 14px;padding-right: 14px;"></i>Alinear a la izquierda</button><button class="btn dropdown-item" data-element="justifyCenter"><i class="fas fa-align-center" style="font-size: 14px;padding-right: 14px;"></i>Alinear al centro</button><button class="btn dropdown-item" data-element="justifyRight"><i class="fas fa-align-right" style="font-size: 14px;padding-right: 14px;"></i>Alinear a la derecha</button><button class="btn dropdown-item" data-element="justifyFull"><i class="fas fa-align-justify" style="font-size: 14px;padding-right: 14px;"></i>Justificar</button></div>
+                        </div>
+                    </div>
+                    <div class="float-start" style="width: 30px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-element="indent"><i class="fa fa-indent" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>
+                    <div class="float-start" style="width: 30px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-element="outdent"><i class="fa fa-outdent" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>
+                    <div class="float-start" style="width: 30px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-element="insertUnorderedList"><i class="fa fa-list-ul" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>
+                    <div class="float-start" style="width: 30px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-element="insertOrderedList"><i class="fa fa-list-ol" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>
+                    <!--<div class="float-start" style="width: 30px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-element="formatBlock"><i class="fa fa-quote-right" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>-->
+                    <div class="float-start" style="width: 30px;"><button class="btn btn-link" id="btnProductos" data-bs-toggle="modal" data-bs-target="#productoModal" type="button" style="padding: 0px;border-style: none;border-radius: 0px;"><i class="fa fa-product-hunt" style="font-size: 20px;color: rgb(0,0,0);"></i></button></div>
+                    <div class="float-start" style="width: 30px;"><button class="btn btn-link" type="button" style="padding: 0px;border-style: none;border-radius: 0px;" data-element="createLink"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-link" style="font-size: 20px;color: rgb(0,0,0);">
+                                <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"></path>
+                                <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"></path>
+                            </svg></button></div>
+                    <div class="float-start" style="width: 45px;">
+                        <div class="dropdown" style="width: 40px;"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: rgb(255,255,255);color: rgb(0,0,0);padding: 0px;border-style: none;border-top-style: none;border-right-style: none;border-radius: 0px;"><i class="fa fa-image" style="font-size: 20px;"></i></button>
+                            <div class="dropdown-menu"><button class="btn dropdown-item" data-element="insertImage"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-link" style="padding-right: 5px;font-size: 20px;">
+                                        <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"></path>
+                                        <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"></path>
+                                    </svg>URL</button></div>
+                        </div>
+                    </div>
+                    <div class="float-start" style="width: 45px;">
+                        <div class="dropdown" style="width: 40px;"><button class="btn dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: rgb(255,255,255);color: rgb(0,0,0);padding: 0px;border-style: none;border-top-style: none;border-right-style: none;border-radius: 0px;"><i class="material-icons" style="font-size: 20px;">video_library</i></button>
+                            <div class="dropdown-menu"><button class="btn dropdown-item" data-element="insertHTML"><i class="fab fa-youtube" style="padding-right: 5px;"></i>Youtube</button></div>
+                        </div>
+                    </div>
+                    <div class="modal fade" role="dialog" tabindex="-1" id="colorModal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Seleccionar color</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body"><input type="color" id="inputColor"></div>
+                                <div class="modal-footer"><button class="btn btn-light border border-secondary" id="btnCambiarColor" type="button" data-bs-dismiss="modal">Aceptar</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div contenteditable="true" id="txtContenido" class="shadow-none form-control form-control-lg" name="contenido" style="padding: 16px;font-size: 15px;border-radius: 0px;height: 400px;resize: none;color: rgb(0,0,0); overflow: scroll;"></div>
+                </div>
+            </div>
+
+            <div class="modal fade" role="dialog" tabindex="-1" id="productoModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Productos</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row" id="cardContainer">
+                            <!--Productos-->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancelar</button><button class="btn btn-primary" type="button">Aceptar</button></div>
+            </div>
+        </div>
+    </div>
+
+            <div class="d-flex d-sm-flex justify-content-end justify-content-sm-end container"><a href="#"></a></div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="/assets/js/fetch_script.js"></script>
+    <script type="module" src="/assets/js/text_editor_script.js"></script>
+    <script type="module" src="/assets/js/rich_text_editor.js"></script>
+    <script src="/assets/js/theme.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+{{> header}}
+
+<body id="page-top">
+    <div id="wrapper">
+        {{> navbar_vertical}}
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                {{> navbar_horizontal}}
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Perfil</h3>
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+                                <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" id="imgFotoPerfil" src="../" width="160" height="160">
+                                    <div class="mb-3"><button class="btn btn-primary btn-sm" id="btnCambiarFoto" type="button">Change Photo</button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row mb-3 d-none">
+                                <div class="col">
+                                    <div class="card textwhite bg-primary text-white shadow">
+                                        <div class="card-body">
+                                            <div class="row mb-2">
+                                                <div class="col">
+                                                    <p class="m-0">Peformance</p>
+                                                    <p class="m-0"><strong>65.2%</strong></p>
+                                                </div>
+                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                            </div>
+                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card textwhite bg-success text-white shadow">
+                                        <div class="card-body">
+                                            <div class="row mb-2">
+                                                <div class="col">
+                                                    <p class="m-0">Peformance</p>
+                                                    <p class="m-0"><strong>65.2%</strong></p>
+                                                </div>
+                                                <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                            </div>
+                                            <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 fw-bold">Mi perfil</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="mb-3"><label class="form-label" for="usuario"><strong>Usuario</strong></label><input class="form-control" type="text" id="username" name="usuario" disabled></div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="mb-3"><label class="form-label" for="email"><strong>Email&nbsp;</strong></label><input class="form-control" type="text" id="email" name="email"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                                        <div class="mb-3"><label class="form-label" for="nombre"><strong>Nombre</strong><br></label><input class="form-control" type="text" id="name" name="first_name"></div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="mb-3"><label class="form-label" for="cedula"><strong>Cédula</strong><br></label><input class="form-control" type="text" id="cedula" name="cedula"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Guardar</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 fw-bold">Contacto</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="mb-3"><label class="form-label" for="direccion"><strong>Dirección</strong></label><input class="form-control" type="text" id="address" name="direccion"></div>
+                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Guardar</button></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="/assets/js/fetch_script.js"></script>
+    <script type="module" src="/assets/js/profile_script.js"></script>
+    <script src="/assets/js/theme.js"></script>
+</body>
+
+</html>
