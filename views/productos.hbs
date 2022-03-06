@@ -18,10 +18,11 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 51px;">#</th>
-                                            <th style="width: 213px;">Nombre</th>
                                             <th style="width: 441px;">Descripción</th>
                                             <th style="width: 88px;">Precio</th>
                                             <th style="width: 213px;">Categoria</th>
+                                            <th style="width: 213px;">Link afiliado</th>
+                                            <th style="width: 213px;">Imagen</th>
                                             <th style="width: 211px;">Operaciones</th>
                                         </tr>
                                     </thead>
@@ -30,11 +31,12 @@
                                         <tr>
                                             <td style="display: none;">{{this.id}}</td>
                                             <td>{{incremented @index}}</td>
-                                            <td>{{this.nombre}}</td>
                                             <td>{{this.descripcion}}</td>
                                             <td>{{this.precio}}</td>
                                             <td style="display: none;">{{this.categoriumId}}</td>
                                             <td>{{this.categorium.nombre}}</td>
+                                            <td>{{this.link}}</td>
+                                            <td>{{this.imagen}}</td>
                                             <td>
                                                 <div class="btn-group" role="group"><button class="btn btn-primary btnAniadir btnAction" type="button" data-bs-toggle="modal" data-bs-target="#productoModal" style="font-size: 12px;">Añadir</button><button class="btn btn-secondary btnModificar btnAction" type="button" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#productoModal">Modificar</button><button class="btn btn-danger btnAction" type="button" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#eliminarModal">Eliminar</button></div>
                                             </td>
@@ -44,7 +46,6 @@
                                     <tfoot>
                                         <tr>
                                             <td><strong>#</strong></td>
-                                            <td><strong>Nombre</strong></td>
                                             <td><strong>Descripción</strong></td>
                                             <td><strong>Precio</strong></td>
                                             <td><strong>Categoria</strong></td>
@@ -76,14 +77,15 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Título</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h4 class="modal-title">Datos</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="container">
-                                        <form class="user" id="modalForm" onsubmit="return validateMyForm()">
-                                            <div class="mb-3"><input class="form-control" id="nombre" type="text" style="padding: 10px;font-size: 17px;" placeholder="Nombre" name="nombre" required></div>
-                                            <div class="mb-3"></div><textarea class="form-control" id="descripcion" name="descirpcion" placeholder="Descripción" style="padding: 10px;font-size: 16px;margin-bottom: 16px;resize: none;" required></textarea>
+                                        <form class="user" id="modalForm">
+                                            <div class="mb-3"></div><textarea class="form-control" id="descripcion" name="descirpcion" placeholder="Descripción" style="padding: 10px;font-size: 16px;margin-bottom: 16px;resize: none; overflow:scroll;" required></textarea>
                                             <div class="mb-3"><input class="form-control" id="precio" type="number" style="padding: 10px;font-size: 16px;" name="precio" placeholder="Precio" min="0" step="0.01" required></div>
+                                            <div class="mb-3"><input class="form-control" id="imagen" type="text" style="padding: 10px;font-size: 16px;" name="imagen" placeholder="Link imagen" required></div>
+                                            <div class="mb-3"><input class="form-control" id="link" type="text" style="padding: 10px;font-size: 16px;" name="link" placeholder="Link afiliado" required></div>
                                             <select class="form-control" id="categoria">
                                                 <option>Categoria</option>
                                             </select>
@@ -112,12 +114,12 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Modal Title</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h4 class="modal-title">Datos</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <p>The content of your modal.</p>
                             </div>
-                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancelar</button><button class="btn btn-primary" type="button">Guardar</button></div>
                         </div>
                     </div>
                 </div>

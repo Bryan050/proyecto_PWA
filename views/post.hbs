@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row" style="background: #efefef;">
                 <div class="col-md-10 col-lg-8 mx-auto">
-                    <h1 id="lblTitulo" style="padding-top: 14px;padding-bottom: 0px;"></h1><span id="lblAutor" style="font-size: 16px;font-weight: bold;"></span><span id="lblFechaPublicacion" style="font-size: 16px;padding: 0px;margin-left: 20px;"><br><br></span>
+                    <h1 id="lblTitulo" style="padding-top: 14px;padding-bottom: 0px;"></h1></br><span id="lblAutor" style="font-size: 16px;font-weight: bold;"></span><h2 id="lblFechaPublicacion" style="font-size: 16px;padding: 0px;"><br><br></h2>
                 </div>
             </div>
         </div>
@@ -21,50 +21,22 @@
         </div>
     </article>
     <div class="container">
-        <div class="row" style="background: #efefef;">
-            <div class="col-md-10 col-lg-8 mx-auto btnReplay" style="margin-bottom: 5px;">
-                <div class="card" style="background: rgb(239,239,239);">
-                    <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 col-xxl-11">
-                        <div class="card-body">
-                            <h6 class="text-muted mb-2" id="lblAutorComentario">Autor</h6>
-                            <p id="lblComentario" style="font-size: 14px;margin-top: 0;margin-bottom: 0;">Judging businesses based on the racial composition of its owners seems like an awful idea to me, I do not understand why this is socially acceptable in your community.<br></p>
-                            <div><button class="btn shadow-none btnReplay" id="btnReply" type="button" style="background: rgb(239,239,239);padding: 0;">Responder</button></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-10 col-lg-8 mx-auto" style="margin: 0px;padding-left: 57px;margin-bottom: 5px;">
-                <div class="card" style="background: rgb(239,239,239);">
-                    <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 col-xxl-11">
-                        <div class="card-body">
-                            <h6 class="text-muted mb-2" id="lblAutorComentario-1">Autor</h6>
-                            <p id="lblComentario-1" style="font-size: 14px;margin-top: 0;margin-bottom: 0;">Judging businesses based on the racial composition of its owners seems like an awful idea to me, I do not understand why this is socially acceptable in your community.<br></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <h1 class="col-md-10 col-lg-8 mx-auto mt-5" style="font-size: 29px;margin-bottom: 18px;">Comentarios</h1>
+        <div class="row " id="ctnSeccionComentario" style="background: #efefef;">
+            <!---Contenedor de un comentario-->
+            
+           
         </div>
-        <div class="col-md-10 col-lg-8 mx-auto" style="margin: 0px;padding-left: 0px;margin-bottom: 5px;">
+        
+        <div class="col-md-10 col-lg-8 mx-auto" id="frmComentario" style="margin: 0px;padding-left: 0px;margin-bottom: 5px;">
             <form>
-                <h1 style="font-size: 29px;margin-bottom: 18px;">Poner un comentario</h1><textarea class="form-control" id="txtComentario" placeholder="Comentario" style="margin-bottom: 5px;height: 106px;resize: none;"></textarea><input class="form-control" type="text" id="txtNombre" placeholder="Nombre" style="margin-bottom: 5px;"><input class="form-control" type="email" placeholder="Correo" style="margin-bottom: 5px;">
+                <h1 style="font-size: 29px;margin-bottom: 18px;">Poner un comentario</h1><textarea class="form-control" id="txtComentario" placeholder="Comentario" style="margin-bottom: 5px;height: 106px;resize: none;" required></textarea><input class="form-control" type="text" id="txtNombre" placeholder="Nombre" style="margin-bottom: 5px;" required><input class="form-control" type="email" id="txtEmail" placeholder="Correo" style="margin-bottom: 5px;" required>
                 <div style="text-align: right;"><button class="btn btn-primary" type="button" style="padding: 0;margin: 0;padding-right: 20px;padding-left: 21px;padding-top: 12px;padding-bottom: 12px;" id="btnSubmit">Enviar comentario</button></div>
             </form>
         </div>
     </div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-lg-8 mx-auto">
-                    <ul class="list-inline text-center">
-                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></li>
-                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></li>
-                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-github fa-stack-1x fa-inverse"></i></span></li>
-                    </ul>
-                    <p class="text-muted copyright">Copyright&nbsp;©&nbsp;Brand 2022</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    
+    {{> footer_blog}}
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script type="module" src="/assets/js/fetch_script.js"></script>
     <script type="module" src="/assets/js/post_script.js"></script>

@@ -12,36 +12,30 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-lg-8">
+            <div class="col-md-10 col-lg-8" id="ctnResultadosBlog">
                 {{#each blogs}}
                     <div class="post-preview">
                         <a href="{{this.id}}" class="linkBlog">
                             <h2 class="post-title">{{this.titulo}}</h2>
-                            <h3 class="post-subtitle">Contenido Cortado</h3>
+                            {{splitContent this.contenido}}
                         </a>
                         <p class="post-meta">Publicado por&nbsp;{{this.autor}} el {{this.fecha_publicacion}}</p>
                     </div>
                     <hr>
                 {{/each}}
-                <div class="clearfix"><button class="btn btn-primary float-end" type="button">Older Posts&nbsp;⇒</button></div>
+            </div>
+            <div class="col-md-3 col-lg-4" id="ctnCategorias">
+                <h1 style="font-size: 20px;">Categorias</h1>
+                <hr style="margin: 5px 0px;">
+            </div>
+             <div class="col-md-10 col-lg-8">
+                 <div class="clearfix"><button class="btn btn-primary float-end" type="button">Older Posts&nbsp;⇒</button></div>
             </div>
         </div>
     </div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-lg-8 mx-auto">
-                    <ul class="list-inline text-center">
-                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></li>
-                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></span></li>
-                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-github fa-stack-1x fa-inverse"></i></span></li>
-                    </ul>
-                    <p class="text-muted copyright">Copyright&nbsp;©&nbsp;Brand 2022</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {{> footer_blog}}
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="module" src="/assets/js/fetch_script.js"></script>
     <script type="module" src="/assets/js/blogs_script.js"></script>
 </body>
 

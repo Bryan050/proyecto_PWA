@@ -94,6 +94,26 @@ export const Peticiones = {
             const message = "Error with Status Code: " + response.status;
             throw new Error(message);
           }
+          return response.json();
+        } catch (error) {
+          console.log("Error: " + error);
+        }
+    },
+
+    updateWithImage: async (ruta, datos) => {
+      console.log(datos.foto);
+      let url = new URL(variables.URL+ruta);;
+        const data = datos;
+        try {
+          const response = await fetch(url, {
+            method: 'PUT',
+            body:new FormData(data)
+           });
+    
+          if (!response.ok) {
+            const message = "Error with Status Code: " + response.status;
+            throw new Error(message);
+          }
           data = response.json();
           console.log(data);
         } catch (error) {

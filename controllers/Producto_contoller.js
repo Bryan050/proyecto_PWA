@@ -1,15 +1,17 @@
 const db = require('../models');
 const ApiError = require('../error/ApiError');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 module.exports = {
     aniadirProducto: async (req, res, next)=>{
-        const {nombre, descripcion, precio,categoriumId, link} = await req.body;
+        const {descripcion, precio,categoriumId, link, imagen} = await req.body;
         const Producto = await db.producto.create({
-            nombre: nombre,
             descripcion: descripcion,
             precio: precio,
             categoriumId: categoriumId,
-            link: link
+            link: link,
+            imagen: imagen
         }).catch(error=>next(ApiError.internal(error.message)));    
         await res.status(201).send(Producto);
     },
@@ -72,15 +74,43 @@ module.exports = {
         }
         await res.send(productos);
     },
+    buscarProductoPorDescripcion: async(req, res, next)=>{
+        const productos = await db.producto.findAll({
+            where: {
+                descripcion: {
+                  [Op.like]: '%'+req.params.buscar+'%'
+                }
+             },
+        }
+        ).catch(error=>next(ApiError.internal(error.message)));
+        if(productos.length === 0){
+            next(ApiError.badRequest("Producto no encontrado"));
+            return;
+        }
+        await res.send(productos);
+    },
+    buscarProductoPorCategoria: async(req, res, next)=>{
+        const productos = await db.producto.findAll({
+            where: {
+                categoriumId: req.params.id
+             },
+        }
+        ).catch(error=>next(ApiError.internal(error.message)));
+        if(productos.length === 0){
+            next(ApiError.badRequest("Producto no encontrado"));
+            return;
+        }
+        await res.send(productos);
+    },
     
     modificarProducto: async(req, res, next)=>{
-        const {id, nombre, descripcion, precio,categoriumId, link} = await req.body;
+        const {id, descripcion, precio,categoriumId, link, imagen} = await req.body;
         const modificados = await db.producto.update({
-            nombre: nombre,
             descripcion: descripcion,
             precio: precio,
             categoriumId: categoriumId,
-            link: link
+            link: link,
+            imagen: imagen
         },
         {
             where: {id: id}

@@ -7,6 +7,7 @@ var txtCedula = document.getElementById("txtCedula");
 var txtPassword = document.getElementById("txtPassword");
 var txtRepeatPassword = document.getElementById("txtRepeatPassword");
 var btnSubmit = document.getElementById("btnSubmit");
+var txtEmail = document.getElementById("txtEmail");
 
 var nombre;
 var usuario;
@@ -15,6 +16,7 @@ var cedula;
 var password;
 var passwordRepeat;
 var rol;
+var email;
 
 btnSubmit.addEventListener('click',(event)=>{
     event.preventDefault();
@@ -38,6 +40,7 @@ function obtenerDatos(){
     direccion = txtDireccion.value;
     cedula = txtCedula.value;
     password = txtPassword.value;
+    email = txtEmail.value;
     rol = "administrador"
 
     const newUser = {
@@ -46,7 +49,8 @@ function obtenerDatos(){
         nombre: nombre, 
         direccion: direccion, 
         cedula: cedula, 
-        rol: rol
+        rol: rol,
+        email: email
     }
     return newUser;
 }

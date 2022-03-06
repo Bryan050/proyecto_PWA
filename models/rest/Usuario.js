@@ -22,9 +22,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(20),
             allowNull: false
         },
-        imagen: {
+        email: {
             type: DataTypes.STRING,
-          }
+            allowNull: false
+        },
+        
+        foto: {
+          type: DataTypes.BLOB,
+        }
     }, {
         timestamps: false,
         createdAt: false,

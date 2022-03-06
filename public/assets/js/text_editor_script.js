@@ -13,6 +13,7 @@ var id;
 var titulo;
 var contenido;
 var estado;
+var idUsuario;
 
 var bPreguntar = true;
 window.onbeforeunload = preguntarAntesDeSalir;
@@ -23,10 +24,12 @@ function preguntarAntesDeSalir()
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
+    idUsuario = sessionStorage.getItem('id');
     var usuario = sessionStorage.getItem("usuario");
     lblUsuario.innerHTML = usuario;
     getParameters();
     cargarDatos();
+    cargarFotoUsuario();
 }); 
 
 function getParameters(){
@@ -34,6 +37,18 @@ function getParameters(){
     var url = new URL(url_string);
     id = url.searchParams.get("id");
 }
+
+
+function cargarFotoUsuario(){
+    Peticiones.retrieve('/usuarios/find/'+idUsuario).then(usuarios=>{
+      var data = new Uint8Array(usuarios[0].foto.data);
+      var blob = new Blob([data], { type: "image/jpg" });
+      var url = URL.createObjectURL(blob);
+      
+      fotoPerfil.setAttribute('src', url);
+    });
+    
+  }
 
 btnProducto.addEventListener('click', (element)=>{
     listarProductos();
@@ -77,9 +92,15 @@ function modificar(){
         "productoId": "",
         "categoriumId": "",
         "comentarioId": "",
-        "usuarioId": ""
+        "usuario": sessionStorage.getItem("id")
     }
-    Peticiones.update("/blogs/edit", blog);
+    Peticiones.update("/blogs/edit", blog).then(blogs =>{
+        if(!isNaN(blogs)){
+            alert("Cambios guardados");
+            window.onbeforeunload = false;
+            window.location.reload();
+        }
+    });
 }
 
 
@@ -88,17 +109,16 @@ function listarProductos(){
         cardContainer.innerHTML = "";
         productos.forEach(producto=>{
             //console.log(producto.precio);
-            var targeta = '<div class="col-6 col-md-6" >'
+            var targeta = '<div class="col-3 col-md-3" >'
                 +'<div class="card">'
                     +'<div class="row">'
                         +'<div class="col-12">'
-                            +'<img>'
+                            +'<img src="'+producto.imagen+'" style= "width: 100%; height: 100%;">'
                         +'</div>'
                         +'<div class="col-12">'
                             +'<div class="card-body cb-producto"  data-bs-dismiss="modal">'
-                                +'<p style="margin: 0;font-size: 14px;font-weight: bold;">"'+producto.nombre+'"</p>'
-                                +'<p style="margin: 0;font-size: 14px;">'+producto.descripcion+'</p>'
-                                +'<p style="padding: 0;font-size: 14px;">'+producto.precio+'</p>'
+                                +'<a style="margin: href="'+producto.link+'"0;font-size: 14px;">'+producto.descripcion+'</a>'
+                                +'<p style="padding: 0;font-size: 14px;">'+producto.precio+'$</p>'
                             +'</div>'
                         +'</div>'
                     +'</div>'
@@ -114,18 +134,18 @@ function listarProductos(){
                 //document.designMode = 'Off';
                 var datos = targeta.lastChild.firstChild.innerHTML;
                 //console.log(datos);
-                targeta.lastChild.innerHTML ='<div class="card-body border border-secondary " style="width: 18rem;">'
+                targeta.lastChild.innerHTML ='<div class="card-body " style="width: 18rem;">'
                     +datos
                 +'</div>'
 
-                //var pAnterior = document.createElement('p');
-                //pAnterior.innerHTML = ".";
+                var pAnterior = document.createElement('p');
+                pAnterior.innerHTML = ".";
                 var producto = document.createElement('div');
-                producto.setAttribute('contenteditable','false');
+                /*producto.setAttribute('contenteditable','false');
                 producto.setAttribute('style', 'display: block; margin-left: auto;margin-right: auto;');
                 producto.appendChild(targeta);
-                console.log(producto);
-/*
+                console.log(producto);*/
+
                 var row = document.createElement('div');
                 row.setAttribute('class', 'row');
 
@@ -134,6 +154,7 @@ function listarProductos(){
 
                 var colCent = document.createElement('div');
                 colCent.setAttribute('class', 'col-4');
+                colCent.setAttribute('contenteditable','false');
 
                 colCent.setAttribute('style', 'pointer-events: none');
                 colCent.innerHTML = targeta.parentElement.innerHTML;
@@ -149,18 +170,18 @@ function listarProductos(){
                 row.appendChild(colCent);
                 row.appendChild(colDer);
                 producto.appendChild(row);
-                producto.setAttribute('contenteditable','false');
-                producto.setAttribute('id','parent');*/
+                //producto.setAttribute('contenteditable','false');
+                producto.setAttribute('id','parent');
                 
-                //producto.insertAdjacentElement("beforebegin", pAnterior);
+                producto.insertAdjacentElement("beforebegin", pAnterior);
                 
                 //console.log(producto);
                 txtContenido.appendChild(producto);//.lastChild.firstChild);
-                //var product = document.getElementById('parent');
-                //var parentDiv = product.parentNode;
+                var product = document.getElementById('parent');
+                var parentDiv = product.parentNode;
                 //pAnterior.insertBefore(producto);
-                //parentDiv.insertBefore(pPosterior, product.nextSibling);
-                //parentDiv.insertBefore(pAnterior, product);
+                parentDiv.insertBefore(pPosterior, product.nextSibling);
+                parentDiv.insertBefore(pAnterior, product);
             });
           });
         

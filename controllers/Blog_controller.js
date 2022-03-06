@@ -4,16 +4,14 @@ const ApiError = require('../error/ApiError');
 module.exports = {
     aniadirBlog: async (req, res, next)=>{
         const today = new Date().toISOString().slice(0, 10);
-        const {autor, titulo,  contenido, estado, usuario, categoria, comentario, producto} = await req.body;
+        const {autor, titulo,  contenido, estado, usuario, categoria, producto} = await req.body;
         const Blog = await db.blog.create({
             autor: autor,
             titulo: titulo,
             contenido: contenido,
             fecha_publicacion: today,
             estado: estado,
-            productoId: producto,
             categoriumId: categoria,
-            comentarioId: comentario,
             usuarioId: usuario
         }).catch(error=>next(ApiError.internal(error.message)));    
         await res.status(201).send(Blog);
@@ -62,11 +60,19 @@ module.exports = {
     buscarBlog: async(req, res, next)=>{
         const blogs = await db.blog.findAll({
             where: {
-                id: req.params.id,
-                /*include: {
-                    model: db.comentario,
-                    include: [ /* etc  ]
-                }*/
+                id: req.params.id
+            }
+        }).catch(error=>next(ApiError.internal(error.message)));
+        if(blogs.length === 0){
+            next(ApiError.badRequest("Blog no encontrada"));
+            return;
+        }
+        await res.send(blogs);
+    },
+    buscarPorCategoria: async(req, res, next)=>{
+        const blogs = await db.blog.findAll({
+            where: {
+                categoriumId: req.params.id
             }
         }).catch(error=>next(ApiError.internal(error.message)));
         if(blogs.length === 0){
@@ -78,6 +84,7 @@ module.exports = {
     
     modificarBlog: async(req, res, next)=>{
         const {id,autor, titulo, contenido, estado, producto, categoria, comentario, usuario} = await req.body;
+        console.log(req.body);
         const modificados = await db.blog.update({
             autor: autor,
             titulo: titulo,

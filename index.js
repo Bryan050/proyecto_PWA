@@ -4,8 +4,8 @@ const hbs = require('hbs');
 const app = express();
 const db = require('./models');
 const bodyParser = require('body-parser')
+const fileUpload = require('express-fileupload');
 const apiErrorHandler = require('./error/api_error_handler');
-const path = require('path');
 
 require('./helpers/helper');
 
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-
+app.use(fileUpload());
 app.use(session({
     secret: '123465789',
     resave: true,

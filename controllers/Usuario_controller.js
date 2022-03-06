@@ -2,19 +2,11 @@ const db = require('../models');
 const ApiError = require('../error/ApiError');
 const multer = require("multer");
 const path = require("path");
-
-var storage= multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, 'imagesUpload');
-    },
-    filename: (req, file, cb) => {
-      cb(null, Date.now()+path.extname(file.originalname));
-    },
-})
+//const async = require('hbs/lib/async');
 module.exports = {
     aniadirUsuario: async (req, res, next)=>{
-
-        const {usuario, password, nombre, direccion, cedula, rol} = await req.body;
+       
+        const {usuario, password, nombre, direccion, cedula, rol, email} = await req.body;
         const Usuario = await db.usuario.create({
             usuario: usuario,
             password: password,
@@ -22,26 +14,12 @@ module.exports = {
             direccion: direccion,
             cedula: cedula,
             rol: rol,
-            imagen: req.files.imagen[0].path
+            email: email,
+            foto: req.files.foto.data
         }).catch(error=>next(ApiError.internal(error.message)));    
         await res.status(201).send(Usuario);
     },
-    
-    upload: multer({
-          storage: storage,
-          limits: {fileSize:'10000000000'},
-          fileFilter: (req, file, cb)=>{
-              const fileTypes = /jpeg|jpg|png|gif/
-              const mimType = fileTypes.test(file.mimetype);
-              const extname = fileTypes.test(path.extname(file.originalname))
-      
-              if(mimType&&extname){
-                  return cb(null, true);
-              }
-              cb('Give proper files formate to upload');
-          }
-      }).fields([{name:'imagen',maxCount:1}])
-      ,
+
     listar: async(req, res, next)=>{
         const usuarios = await db.usuario.findAll().catch(error=>next(ApiError.internal(error.message)));
         if(usuarios.length === 0){
@@ -82,15 +60,16 @@ module.exports = {
     },
     
     modificarUsuario: async(req, res, next)=>{
-        console.log(req.files);
-        const {id, usuario, password, nombre, direccion, cedula} = await req.body;
+        
+        const {id, usuario, password, nombre, direccion, cedula, email} = await req.body;
         const modificados = await db.usuario.update({
             usuario: usuario,
             password: password,
             nombre: nombre,
             direccion: direccion,
             cedula: cedula,
-            imagen: req.files.imagen[0].path
+            email: email,
+            foto: req.files.foto.data
         },
         {
             where: {id: id}

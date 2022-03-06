@@ -8,6 +8,7 @@ router.get("/editor", Blog.mostrarEditor);
 router.post('/create', Blog.aniadirBlog);
 router.get("/all", Blog.listar);
 router.get("/find/:id", Blog.buscarBlog);
+router.get("/findByCategory/:id", Blog.buscarPorCategoria);
 router.get("/lastEntry", Blog.lastEntry);
 router.put("/edit", Blog.modificarBlog);
 router.delete('/delete/:id', Blog.eliminarBlog);

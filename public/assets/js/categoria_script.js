@@ -31,10 +31,14 @@ btnActionArr.forEach(element => {
 });
 
 async function handleClick() {
+  /*btnSubmit.addEventListener('click',(event)=>{
+    event.preventDefault();
+  });*/
   btnSubmit.click();
 }
 
-function validateMyForm() {
+function validateMyForm(event) {
+  event.preventDefault();
   const data = leerDatos();
   if (data.nombre.length == 0) {
     return false;
@@ -58,9 +62,9 @@ function leerDatos() {
 }
 
 function getAction(td){
-  console.log(td);
+  //console.log(td);
   let action = td.getAttribute("class").split(" ", 3).reverse()[0];
-  console.log(action+" "+action.length);
+  //console.log(action+" "+action.length);
   if(action == "btnAniadir"){
     isModificar = false;
     isCrear = true;
@@ -88,7 +92,9 @@ function vaciarFormulario(){
 }
 
 function crear(){
-  Peticiones.create("/categorias/create",leerDatos());
+  Peticiones.create("/categorias/create",leerDatos()).then(categorias=>{
+    //window.location.reload();
+  });
 }
 
 function modificar(confirmacion){
@@ -97,7 +103,9 @@ function modificar(confirmacion){
     nombre : leerDatos().nombre
   }
   if (confirmacion & (id != null)) {
-    Peticiones.update("/categorias/edit",categoria);
+    Peticiones.update("/categorias/edit",categoria).then(categorias=>{
+      window.location.reload();
+    });
   }
 }
 

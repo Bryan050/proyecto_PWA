@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-    //sequelize.sync({ alter: true });
+    //sequelize.sync({ force: true });
     const Blog = sequelize.define("blog", {
         autor: {
             type: DataType.STRING(50),
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataType) => {
             allowNull: false
         },
         contenido: {
-            type: DataType.STRING(30000)
+            type: DataType.STRING(3000)
         },
         fecha_publicacion: {
             type: DataType.DATEONLY,
@@ -27,19 +27,21 @@ module.exports = (sequelize, DataType) => {
     });
 
     Blog.associate = (models)=>{
-        Blog.belongsTo(models.producto, {
+        /*Blog.belongsTo(models.producto, {
             foreignkey: {
                 name: 'producto_id',
                 allowNull: false
             }
-        });
-        Blog.belongsTo(models.categoria, {
+        });*/
+        Blog.hasMany(models.comentario); //Un blog tiene muchos comentarios
+
+        Blog.belongsTo(models.categoria, { // Un blog pertencece a una categoria
             foreignkey: 'categoria_id'
         });
-        Blog.belongsTo(models.comentario, {
+        /*Blog.belongsTo(models.comentario, {
             foreignkey: 'comentario_id'
-        });
-        Blog.belongsTo(models.usuario, {
+        });*/
+        Blog.belongsTo(models.usuario, { //Un blog pertenece a un usuario
             foreignkey: 'usuario_id'
         });
     }

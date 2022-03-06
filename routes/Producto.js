@@ -7,6 +7,8 @@ router.get("/catalogo", Producto.mostrarCatalogo);
 router.post('/create', Producto.aniadirProducto);
 router.get("/all", Producto.listar);
 router.get("/find/:id", Producto.buscarProducto);
+router.get("/findByDescription/:buscar", Producto.buscarProductoPorDescripcion);
+router.get("/findByCategory/:id", Producto.buscarProductoPorCategoria);
 router.put("/edit", Producto.modificarProducto);
 router.delete('/delete/:id', Producto.eliminarProducto);
 

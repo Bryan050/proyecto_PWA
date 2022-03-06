@@ -28,7 +28,7 @@ function buscarUsuario(){
             sessionStorage.setItem("usuario",usuarios[0].usuario);
             sessionStorage.setItem("password",usuarios[0].password);
             sessionStorage.setItem("nombre",usuarios[0].nombre);
-            sessionStorage.setItem("fotoPerfil",usuarios[0].imagen);
+            //sessionStorage.setItem("foto",usuarios[0].foto.data);
 /*
             let imgData = new Blob(usuarios[0].imagen.data, { type: 'image/png' });
             let link = URL.createObjectURL(imgData);

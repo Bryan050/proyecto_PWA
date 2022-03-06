@@ -12,7 +12,7 @@
                     {{#each blogs}}
                     <div class="container-fluid" style="margin-bottom: 10px;">
                         <div class="row" style="margin-right: 0px;margin-left: 0px;border: 1px solid rgb(209,211,226) ;">
-                            <div class="col-4 col-md-3 col-lg-2 col-xxl-1" style="padding-right: 0px;padding-left: 0px;"><img class="card-img" src="/assets/img/china-desarrollara.jpg" width="100px" height="100px" style="padding: 12px;"></div>
+                            <div class="col-4 col-md-3 col-lg-2 col-xxl-1" style="padding-right: 0px;padding-left: 0px; width: 8rem"><img class="card-img" src="/assets/img/avatars/img-icon.jpg" style="padding: 12px; width: 100%; height: 100%"></div>
                             <div class="col-8 col-md-9 col-lg-10 col-xxl-11" style="padding-right: 0px;padding-left: 0px;">
                                 <div class="row">
                                     <div class="col-10 col-sm-11 col-lg-11 col-xxl-11">
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="d-flex d-sm-flex justify-content-end justify-content-sm-end container">
-                <button id="aniadir" style="padding: 0; border: none; background: none;">
+                <button id="aniadir" data-bs-toggle="modal" data-bs-target="#categoriaModal" style="padding: 0; border: none; background: none;">
                 <i class="fas fa-plus-circle" style="color: rgb(242,199,87);font-size: 55px;"></i>
                 </button>
             </div>
@@ -48,6 +48,26 @@
                         <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancelar</button><button class="btn btn-primary" data-bs-dismiss="modal" id="eliminar">Aceptar</button></div>
                     </div>
                 </div>
+            </div>
+            <div class="modal fade" role="dialog" tabindex="-1" id="categoriaModal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Seleccione la categoria</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <form class="user" id="modalForm" onsubmit="return validateMyForm()">
+                                        <select class="form-control" id="categoria">
+                                                <option>Categoria</option>
+                                        </select>
+                                        <input type="submit" id="submit" style="display: none">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancelar</button><button class="btn btn-primary" type="button" id="btnAceptar">Aceptar</button></div>
+                        </div>
+                    </div>
             </div>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>

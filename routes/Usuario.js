@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const Usuario = require('../controllers/Usuario_controller');
 
-router.post('/create',Usuario.upload, Usuario.aniadirUsuario);
+router.post('/create', Usuario.aniadirUsuario);
 router.get("/all", Usuario.listar);
 router.get("/find/:id", Usuario.buscarUsuario);
 router.get("/findByCredential/:usuario/:password", Usuario.buscarPorCredencial);
-router.put("/edit", Usuario.upload,Usuario.modificarUsuario);
+router.put("/edit",Usuario.modificarUsuario);
 router.delete('/delete/:id', Usuario.eliminarUsuario);
 
 

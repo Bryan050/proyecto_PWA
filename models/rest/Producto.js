@@ -1,16 +1,16 @@
 module.exports = (sequelize, DataType) => {
     //sequelize.sync({ alter: true });
     const Producto = sequelize.define("producto", {
-        nombre: {
-            type: DataType.STRING(100),
-            allowNull: false
-        },
         descripcion: {
             type: DataType.STRING(300),
             allowNull: false
         },
         precio: {
             type: DataType.DECIMAL(5,2),
+            allowNull: false
+        },
+        imagen: {
+            type: DataType.STRING,
             allowNull: false
         },
         link: {
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataType) => {
             foreignkey: 'categoria_id'
         });
 
-        Producto.hasMany(models.blog);
+        //Producto.hasMany(models.blog);
     }
 
     return Producto;
